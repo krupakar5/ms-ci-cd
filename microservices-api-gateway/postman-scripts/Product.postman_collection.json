@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "61d83430-8709-42f9-aedc-038cccfd8d73",
+		"name": "Product",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "304340e7-be8e-4706-a62a-0cd2d340de7a",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 40000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(40000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"var jsonData=JSON.parse(responseBody);",
+							"pm.environment.set(\"ID\", jsonData.id);",
+							"pm.environment.set(\"NAME\", jsonData.productName);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"currency\": 120.00,\r\n  \"decription\": \"good product\",\r\n  \"priceType\": \"monthly\",\r\n  \"productName\": \"coths\",\r\n  \"quantity\": \"10\",\r\n  \"relationshipType\": \"RELATED_ITEM\",\r\n  \"status\": true,\r\n  \"version\": \"1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/product/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"product",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Product Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4b13b64-ca08-424c-abcb-aac686fd8ec6",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 40000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(40000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"currency\": 120.00,\r\n  \"decription\": \"good product\",\r\n  \"priceType\": \"monthly\",\r\n  \"productName\": \"coths\",\r\n  \"quantity\": \"10\",\r\n  \"relationshipType\": \"RELATED_ITEM\",\r\n  \"status\": true,\r\n  \"version\": \"1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/product/{{ID}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"product",
+						"{{ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3dfcd5f6-5da1-4b34-a552-4dafa4b9bdb4",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 40000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(40000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/product/findall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"product",
+						"findall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By ProductName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e8aca5b-b992-4e68-b1bd-c57e5633d1bd",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 40000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(40000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/product/findbyProName/{{NAME}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"product",
+						"findbyProName",
+						"{{NAME}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By Product ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "002a5623-0d93-448a-95ba-639f8ecf7958",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200 \", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/product/delete/{{ID}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"product",
+						"delete",
+						"{{ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

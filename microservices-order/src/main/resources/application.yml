@@ -1,0 +1,17 @@
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version} 
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      database: msadb
+      port: 27017
+
+   
+server:
+  port: 9082

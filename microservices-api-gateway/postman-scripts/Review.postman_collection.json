@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "b471c87c-1bce-449b-a403-3cbc85f0a336",
+		"name": "Review",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Review",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0d3db56f-e384-415d-a478-c87e3ad07003",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 40000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(40000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"var jsonData=JSON.parse(responseBody);",
+							"pm.environment.set(\"ID\", jsonData.productId);",
+							"pm.environment.set(\"NAME\", jsonData.userName);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"productId\": \"113\",\r\n    \"userName\": \"kishore\",\r\n    \"name\": \"fashion\",\r\n    \"price\": \"199.00\",\r\n    \"review\": \" very good\",\r\n    \"rating\": 5\r\n  }"
+				},
+				"url": {
+					"raw": "localhost:9000/review/add",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"review",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Product Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6fb83cab-cfdc-428a-8b79-4354b16b7788",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/review/{{ID}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"review",
+						"{{ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Reviews",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "82f953ba-95c7-4453-95fb-28bd725e7f11",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/review/findall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"review",
+						"findall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "93fe8333-df65-451a-b9ab-b4e7d9f42176",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/review/findbyname/{{NAME}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"review",
+						"findbyname",
+						"{{NAME}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By Product ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07f25132-9279-40dc-8f60-6fe27d7f95b2",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/review/delete/{{ID}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"review",
+						"delete",
+						"{{ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,30 @@
+spring:
+   jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.MySQLDialect
+      
+   datasource:
+        url: jdbc:mysql://awsdb.c96clothhsrh.us-east-2.rds.amazonaws.com:3306/jhomedb
+        username: datasourcedb
+        password: 123456789
+        driver-class-name: com.mysql.jdbc.Driver
+        testWhileIdle: true
+        validationQuery: SELECT 1
+        timeBetweenEvictionRunsMillis: 50000
+
+msa:
+  s3:
+    bucketName: userhomedata/home
+    url: https://s3.us-east-2.amazonaws.com
+  content:
+    weblimit: 1
+    newslimit: 20
+server:
+  port: 9084
+
+security:
+   basic: 
+     enabled: false

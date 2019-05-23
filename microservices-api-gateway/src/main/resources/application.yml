@@ -1,0 +1,46 @@
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+spring:
+  datasource:
+    url: jdbc:mysql://awsdb.c96clothhsrh.us-east-2.rds.amazonaws.com:3306/jhomedb
+    username: datasourcedb
+    password: 123456789
+    driver-class-name: com.mysql.jdbc.Driver
+    maxActive: 10
+    max-idle: 5
+    min-idle: 1
+    testWhileIdle: true
+    test-on-borrow: true
+    validationQuery: SELECT 1
+    timeBetweenEvictionRunsMillis: 5000
+    min-evictable-idle-time-millis: 60000
+    
+
+
+zuul:
+  host:
+    max-total-connections: 10000
+    max-per-route-connections: 50
+    
+server:
+  port: 9000
+  
+  
+security:
+   basic: 
+     enabled: false
+
+  
+documentation: 
+  baseurl: http://localhost
+  swagger: 
+    services:   
+      - 
+        name: product
+        url: ${documentation.baseurl}:9080/v2/api-docs?group=product
+        version: 2.0
+

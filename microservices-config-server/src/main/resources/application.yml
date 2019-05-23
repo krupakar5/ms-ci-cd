@@ -1,0 +1,17 @@
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+    
+spring:
+   cloud:
+    config:
+      server:
+        git:
+          uri: https://gitlab.com/HKRT/gocd.git 
+          username: "mhari.tech"    
+          password: "09g81a0505"
+
+    

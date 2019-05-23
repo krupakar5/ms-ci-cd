@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "47c66985-5330-42ca-85f4-1c91f9ead0a4",
+		"name": "Order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fbf3ffde-56cb-40b3-9a16-463fe23fe0b2",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"ORDERID\", jsonData.orderId);",
+							"pm.environment.set(\"STATUS\", jsonData.status);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"orderId\":\"8989\",\r\n  \"currencyValue\": \"123.00\",\r\n  \"orderType\": \"process\",\r\n  \"status\": \"booking\",\r\n  \"totalType\": \"tax\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/order/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"order",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Order ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2b81e66-9e7c-4484-b074-286a2f609847",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Response time is less than 20000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(20000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/order/getbyorderId/{{ORDERID}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"order",
+						"getbyorderId",
+						"{{ORDERID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By All Orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e254ccc-5b65-48be-aa06-29f7dec35024",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 40000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(40000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/order/findall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"order",
+						"findall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67972e1f-18c6-44cf-a784-a21435747e7f",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 40000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(40000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/order/findbystatus/{{STATUS}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"order",
+						"findbystatus",
+						"{{STATUS}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By OrderID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cbf22a98-f657-4be3-be8f-d4891a974c09",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200 \", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/order/delete/{{ORDERID}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"order",
+						"delete",
+						"{{ORDERID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

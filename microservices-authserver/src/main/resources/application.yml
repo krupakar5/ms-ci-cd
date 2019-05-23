@@ -1,0 +1,51 @@
+
+
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+
+#logging:
+#  level:
+#     org:
+#       springframework:
+#         security: DEBUG
+
+spring:
+   jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.MySQLDialect
+      
+   datasource:
+        url: jdbc:mysql://awsdb.c96clothhsrh.us-east-2.rds.amazonaws.com:3306/jhomedb
+        username: datasourcedb
+        password: 123456789
+        driver-class-name: com.mysql.jdbc.Driver
+        maxActive: 10
+        max-idle: 5
+        min-idle: 1
+        testWhileIdle: true
+        test-on-borrow: true
+        validationQuery: SELECT 1
+        timeBetweenEvictionRunsMillis: 5000
+        min-evictable-idle-time-millis: 60000
+
+
+config:
+ oauth2:
+  accessTokenUri: http://localhost:9999/oauth/token
+    
+    
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.eureka.credentials.uri:http://localhost:8761}/eureka/
+
+server:
+  port: 9999
